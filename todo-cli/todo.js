@@ -7,7 +7,7 @@ const todoList = () => {
       all[index].completed = true
     }
   
-    const overdue = (index) => {
+    const overdue = () => {
       // Write the date check condition here and return the array
       // of overdue items accordingly.
       overduearray = [];
