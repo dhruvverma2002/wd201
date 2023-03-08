@@ -10,49 +10,30 @@ const todoList = () => {
     const overdue = () => {
       // Write the date check condition here and return the array
       // of overdue items accordingly.
-      overduearray = [];
-      all.forEach(item => {
-        if(item.dueDate < today && item.completed == false){
-            overduearry.push("[ ]"+" "+item.title+' '+item.dueDate);
-        }
-      });
-      return overduearray;
+      return all.filter(item => item.dueDate < formattedDate(new Date()))
 
     }
   
     const dueToday = () => {
       // Write the date check condition here and return the array
       // of todo items that are due today accordingly.
-
-      duedatearry=[];
-      
-      all.forEach(item => {
-        if(item.dueDate===today && item.completed==false){
-          duedatearry.push('[ ]'+" "+item.title);
-        }
-        else if(item.dueDate===today && item.completed===true){
-          duedatearry.push('[x]'+' '+item.title);
-        }
-      });
-      return duedatearry;
+      return all.filter(item => item.dueDate === formattedDate(new Date()))
     }
   
     const dueLater = () => {
       // Write the date check condition here and return the array
       // of todo items that are due later accordingly.
-      duelater=[];
-      all.forEach(item => {
-        if(item.dueDate>today){
-          duelater.push('[ ]'+' '+item.title+' '+item.dueDate);
-        }
-      });
-    return duelater;
+      return all.filter(item => item.dueDate > formattedDate(new Date()))
     }
   
     const toDisplayableList = (list) => {
       // Format the To-Do list here, and return the output string
       // as per the format given above.
-      return list;
+      let OUTPUT_STRING = ""
+      list.forEach(item => {
+        OUTPUT_STRING += `[${item.completed ? "x" : " "}] ${item.title} ${item.dueDate === formattedDate(new Date()) ? "" : item.dueDate}\n`
+        })
+      return OUTPUT_STRING.trim()
     }
   
     return {
