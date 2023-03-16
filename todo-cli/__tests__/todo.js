@@ -8,21 +8,17 @@ describe("Todo test cases", () => {
       {
         title: "Complete assignment",
         completed: false,
-        dueDate: new Date(today.getTime() - 1 * oneDay).toLocaleDateString(
-          "en-CA"
-        ),
+        dueDate: new Date(today.getTime() - 1 * oneDay).toISOString().slice(0, 10),
       },
       {
         title: "Go for shopping",
         completed: false,
-        dueDate: new Date().toLocaleDateString("en-CA"),
+        dueDate: new Date().toISOString().slice(0, 10),
       },
       {
         title: "Complete project",
         completed: false,
-        dueDate: new Date(today.getTime() + 1 * oneDay).toLocaleDateString(
-          "en-CA"
-        ),
+        dueDate: new Date(today.getTime() + 1 * oneDay).toISOString().slice(0, 10),
       },
     ].forEach(add);
   });
@@ -32,7 +28,7 @@ describe("Todo test cases", () => {
     add({
       title: "Take the test",
       completed: false,
-      dueDate: new Date().toLocaleDateString("en-CA"),
+      dueDate: new Date().toISOString().slice(0, 10),
     });
 
     expect(all.length).toEqual(4);
