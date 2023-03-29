@@ -7,6 +7,12 @@
     "test": "jest",
     "prepare": "cd .. && husky install todo-cli/.husky"
   },
+  "lint-staged": {
+    "*.js": [
+      "eslint",
+      "prettier --write ."
+    ]
+  },
   "author": "Dhruv Verma--location=global <dhruv.verma8@gmail.com--location=global>",
   "license": "ISC",
   "devDependencies": {
