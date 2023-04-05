@@ -7,7 +7,26 @@ app.use(bodyParser.json());
 
 app.set("view engine", "ejs");
 
+const formattedDate = (d) => {
+  return d.toISOString().split("T")[0];
+};
+
+var dateToday = new Date();
+const today = formattedDate(dateToday);
+const yesterday = formattedDate(
+  new Date(new Date().setDate(dateToday.getDate() - 1))
+);
+const tomorrow = formattedDate(
+  new Date(new Date().setDate(dateToday.getDate() + 1))
+);
+
 app.get("/", async (request, response) => {
+  Todo.deleteAll();
+  Todo.addTodo({ title: "Todo 1", dueDate: yesterday, completed: false });
+  Todo.addTodo({ title: "Todo 2", dueDate: today, completed: true });
+  Todo.addTodo({ title: "Todo 3", dueDate: today, completed: false });
+  Todo.addTodo({ title: "Todo 4", dueDate: tomorrow, completed: false });
+  Todo.addTodo({ title: "Todo 5", dueDate: tomorrow, completed: false });
   const allTodos = await Todo.getTodos();
   if (request.accepts("html")) {
     response.render("index", {
