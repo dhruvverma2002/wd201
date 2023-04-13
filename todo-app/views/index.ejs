@@ -5,11 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
 <body>
-    <header><%- include("header.ejs") %></header>
-    <%- include("todos.ejs") %>
-    <footer><%- include("footer.ejs") %></footer>
+    <div class="grid grid-cols-6">
+        <div class="col-start-3 col-span-2">
+            <header><%- include("header.ejs") %></header>
+            <%- include("todos.ejs") %>
+            <footer><%- include("footer.ejs") %></footer>
+        </div>
+    </div>
+    
 </body>
 </html>
