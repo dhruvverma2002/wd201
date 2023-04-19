@@ -38,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
     static async remove(id) {
       return this.destroy({ where: { id } });
     }
-    setStatus(status) {
+    setCompletionStatus(status) {
       return this.update({ completed: status });
     }
 
