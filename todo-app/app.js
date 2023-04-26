@@ -28,13 +28,6 @@ app.set("view engine", "ejs");
 // );
 
 app.get("/", async (request, response) => {
-  // Todo.deleteAll();
-  // Todo.addTodo({ title: "Todo 1", dueDate: yesterday, completed: false });
-  // Todo.addTodo({ title: "Todo 2", dueDate: yesterday, completed: true });
-  // Todo.addTodo({ title: "Todo 3", dueDate: today, completed: false });
-  // Todo.addTodo({ title: "Todo 4", dueDate: tomorrow, completed: false });
-  // Todo.addTodo({ title: "Todo 5", dueDate: tomorrow, completed: false });
-  // const allTodos = await Todo.getTodos();
   const CompletedItems = await Todo.CompletedItems();
   const overdue = await Todo.overdue();
   const dueToday = await Todo.dueToday();
@@ -84,6 +77,7 @@ app.post("/todos", async function (request, response) {
 
 app.put("/todos/:id", async function (request, response) {
   const todo = await Todo.findByPk(request.params.id);
+  console.log(request.body.completed);
   try {
     const updatedTodo = await todo.setCompletionStatus(
       request.body.completed === true ? false : true
